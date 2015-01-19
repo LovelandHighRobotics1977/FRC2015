@@ -15,6 +15,8 @@ public class RobotMap {
     public static final int DRIVE_BACK_RIGHT_TALON = 3;
     public static final int SOLENOID_TEST_PISTON_FORWARD = 1;
     public static final int SOLENOID_TEST_PISTON_REVERSE = 0;
+    public static final int LIFT_ENCODER_FORWARD_LIMIT = 0;
+    public static final int LIFT_ENCODER_BACKWARD_LIMIT = 1;
     
     /**
      * @author 1977 Loveland High Robotics

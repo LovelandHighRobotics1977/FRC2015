@@ -1,10 +1,13 @@
 
 package org.usfirst.frc.team1977.robot;
 
+import edu.wpi.first.wpilibj.BuiltInAccelerometer;
+import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 import org.usfirst.frc.team1977.robot.commands.CommandBase;
 import org.usfirst.frc.team1977.robot.input.OI;
@@ -20,6 +23,8 @@ import org.usfirst.frc.team1977.robot.subsystems.Drive;
 public class Robot extends IterativeRobot {
 
     Command autonomousCommand;
+    BuiltInAccelerometer bia;
+    Encoder enc;
 
     /**
      * This function is run when the robot is first started up and should be
@@ -29,6 +34,9 @@ public class Robot extends IterativeRobot {
     	//Initialize the CommandBase, which will also initialize all active subsystems
 		CommandBase.init();
 		OI.getInstance().init();
+		bia = new BuiltInAccelerometer();
+		enc = new Encoder(0, 1);
+		enc.setDistancePerPulse(2.0);
         // instantiate the command used for the autonomous period
     }
 	
@@ -69,9 +77,15 @@ public class Robot extends IterativeRobot {
      */
     public void teleopPeriodic() {
         Scheduler.getInstance().run();
+        //System.out.println("X " + bia.getX());
+        //System.out.println("Y " + bia.getY());
+        //System.out.println("Z " + bia.getZ());
+        System.out.println(enc.get());
+        SmartDashboard.putNumber("Enc", enc.get());
     }
     
     /**
+     * 
      * This function is called periodically during test mode
      */
     public void testPeriodic() {
