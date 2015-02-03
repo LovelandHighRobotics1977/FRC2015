@@ -23,6 +23,7 @@ public class Drive extends Subsystem {
     
     private UserDrive userDrive;
     
+    private boolean speedToggle = false;
     private double voltageCoefficient = 1;
     private double turnPowerCoefficient = 1;
 
@@ -63,6 +64,19 @@ public class Drive extends Subsystem {
     
     public void stop() {
     	drive(0, 0, 0);
+    }
+    
+    public boolean isSpeedToggle() {
+    	return speedToggle;
+    }
+    
+    public void setSpeedToggle(boolean speedToggle) {
+    	this.speedToggle = speedToggle;
+    	if (speedToggle) {
+    		voltageCoefficient = 0.5;
+    	} else {
+    		voltageCoefficient = 1.0;
+    	}
     }
 }
 

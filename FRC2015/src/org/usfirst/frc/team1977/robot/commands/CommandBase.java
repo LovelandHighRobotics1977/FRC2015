@@ -1,27 +1,40 @@
-	package org.usfirst.frc.team1977.robot.commands;
+package org.usfirst.frc.team1977.robot.commands;
 
 import org.usfirst.frc.team1977.robot.input.OI;
 import org.usfirst.frc.team1977.robot.subsystems.Drive;
-import org.usfirst.frc.team1977.robot.subsystems.Pneumatics;
+import org.usfirst.frc.team1977.robot.subsystems.Grasper;
+import org.usfirst.frc.team1977.robot.subsystems.Lift;
 
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
- *@author Loveland High Robotics 1977
- *@author Evan Stewart
- *A shell parent class extending Command in order to provide a few extra, general purpose characteristics
- *to each of the commands used on the robot.  In particular, inherited access to all subsystems and other
- *important robot elements, such as the OI.
+ * A shell parent class extending Command in order to provide a few extra,
+ * general purpose characteristics to each of the commands used on the robot. In
+ * particular, inherited access to all subsystems and other important robot
+ * elements, such as the OI.
+ *
+ * @author Loveland High Robotics 1977
+ * @author Evan Stewart
  */
 public abstract class CommandBase extends Command {
-	
+	/**
+	 * Inherited static access to the OI.
+	 */
 	protected static OI oi;
+	// Inherited static subsystem references.
 	protected static Drive drive;
-	protected static Pneumatics pneumatics;
+	protected static Lift lift;
+	protected static Grasper grasper;
 
-   public static void init() {
-	   oi = OI.getInstance();
-	   drive = Drive.getInstance();
-	   pneumatics = Pneumatics.getInstance();
-   }
+	/**
+	 * Initialize the CommandBase, in doing so accessing and initializing every
+	 * primary subsystem on the robot. Use this during robot initialization to
+	 * prevent unnecessary redundancy.
+	 */
+	public static void init() {
+		oi = OI.getInstance();
+		drive = Drive.getInstance();
+		lift = Lift.getInstance();
+		grasper = Grasper.getInstance();
+	}
 }
