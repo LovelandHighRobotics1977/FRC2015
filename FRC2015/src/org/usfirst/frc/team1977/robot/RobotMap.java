@@ -16,11 +16,11 @@ public class RobotMap {
 	// distinction is not major.
 	// |>===== CAN Devicenums =====<|
 	// Power Distribution Panel
-	public static final int PDP_DEVICENUM = 1; //TODO: Reflash to this from 0
+	public static final int PDP_DEVICENUM = 0; //TODO: Reflash to this from 0 to 1
 	// Pneumatic Control Module
-	public static final int PCM_DEVICENUM = 1; //TODO: Reflash to this from 0
+	public static final int PCM_DEVICENUM = 0; //TODO: Reflash to this from 0 to 1
 	// Talon SRX
-	public static final int LIFT_WINCH_TALONSRX_DEVICENUM = 1; //TODO: Reflash to this from 0
+	public static final int LIFT_WINCH_TALONSRX_DEVICENUM = 0; //TODO: Reflash to this from 0 to 1
 	// |>===== PWM Out =====<|
 	// Talon
 	public static final int DRIVE_FRONT_LEFT_TALON = 0;
@@ -40,6 +40,7 @@ public class RobotMap {
 	public static final int GRASPER_MID_REED = 6;
 	public static final int GRASPER_THIN_REED = 7;
 	public static final int GRASPER_CLOSE_REED = 8;
+	public static final int GRASPER_SUCTION_LIMIT = 9;
 	// |>===== Analog In =====<|
 	// |>===== Pneumatic Control Module =====<|
 	// Double Solenoid

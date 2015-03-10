@@ -21,24 +21,25 @@ public class ReleaseGrasper extends CommandBase {
 	}
 
 	protected void initialize() {
-		if (!grasper.getState().equals(Grasper.State.Open)) {
+		//if (!grasper.getState().equals(Grasper.State.Open)) {
 			grasper.retractPiston();
-			retractTime = System.currentTimeMillis();
-		}
+			//retractTime = System.currentTimeMillis();
+		//}
 	}
 
 	protected void execute() {
 	}
 
 	protected boolean isFinished() {
-		return (grasper.getOpenReed() || (System.currentTimeMillis() - retractTime) >= TIMEOUT_MILLIS);
+		//return (grasper.getOpenReed() || (System.currentTimeMillis() - retractTime) >= TIMEOUT_MILLIS);
+		return true;
 	}
 
 	protected void end() {
-		grasper.setState(grasper.getOpenReed() ? Grasper.State.Open : Grasper.State.Closed_Jam);
+		//grasper.setState(grasper.getOpenReed() ? Grasper.State.Open : Grasper.State.Closed_Jam);
 	}
 
 	protected void interrupted() {
-		grasper.setState(grasper.getOpenReed() ? Grasper.State.Open : Grasper.State.Closed_Jam);
+		//grasper.setState(grasper.getOpenReed() ? Grasper.State.Open : Grasper.State.Closed_Jam);
 	}
 }

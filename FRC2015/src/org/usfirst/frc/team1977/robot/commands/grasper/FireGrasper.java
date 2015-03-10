@@ -34,15 +34,15 @@ public class FireGrasper extends CommandBase {
 	}
 
 	protected void initialize() {
-		lastTrip = System.currentTimeMillis();
-		if (grasper.getState().equals(Grasper.State.Open)) {
+		//lastTrip = System.currentTimeMillis();
+		//if (grasper.getState().equals(Grasper.State.Open)) {
 			grasper.firePiston();
-		}
+		//}
 	}
 
 	// Called repeatedly when this Command is scheduled to run
 	protected void execute() {
-		if (grasper.getWideReed()) {
+		/*if (grasper.getWideReed()) {
 			if (++wideToteCount >= REED_TRIGGER_COUNT) {
 				wideTote = true;
 			}
@@ -72,15 +72,16 @@ public class FireGrasper extends CommandBase {
 		}
 		if (wideToteCount + binCount + longToteCount > 0) {
 			lastTrip = System.currentTimeMillis();
-		}
+		}*/
 	}
 
 	protected boolean isFinished() {
-		return fullClose || (System.currentTimeMillis() - lastTrip) >= TIMEOUT_MILLIS;
+		//return fullClose || (System.currentTimeMillis() - lastTrip) >= TIMEOUT_MILLIS;
+		return true;
 	}
 
 	protected void end() {
-		if (fullClose) {
+		/*if (fullClose) {
 			grasper.setState(Grasper.State.Closed_Full);
 		} else if (longTote) {
 			grasper.setState(Grasper.State.Closed_Tote_Long);
@@ -90,11 +91,11 @@ public class FireGrasper extends CommandBase {
 			grasper.setState(Grasper.State.Closed_Tote_Wide);
 		} else {
 			grasper.setState(Grasper.State.Closed_Jam);
-		}
+		}*/
 	}
 
 	protected void interrupted() {
-		if (fullClose) {
+		/*if (fullClose) {
 			grasper.setState(Grasper.State.Closed_Full);
 		} else if (longTote) {
 			grasper.setState(Grasper.State.Closed_Tote_Long);
@@ -104,6 +105,6 @@ public class FireGrasper extends CommandBase {
 			grasper.setState(Grasper.State.Closed_Tote_Wide);
 		} else {
 			grasper.setState(Grasper.State.Closed_Jam);
-		}
+		}*/
 	}
 }

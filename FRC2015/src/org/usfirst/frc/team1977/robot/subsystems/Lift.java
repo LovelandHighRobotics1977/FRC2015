@@ -1,13 +1,11 @@
 package org.usfirst.frc.team1977.robot.subsystems;
 
 import org.usfirst.frc.team1977.robot.RobotMap;
+import org.usfirst.frc.team1977.robot.commands.lift.POVLift;
 import org.usfirst.frc.team1977.robot.input.RotaryEncoder;
-
-import com.ni.vision.NIVision.LineFeature;
 
 import edu.wpi.first.wpilibj.CANTalon;
 import edu.wpi.first.wpilibj.DigitalInput;
-import edu.wpi.first.wpilibj.TalonSRX;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
 /**
@@ -80,6 +78,6 @@ public class Lift extends Subsystem {
 	}
 
 	protected void initDefaultCommand() {
-		setDefaultCommand(null);  // No default command
+		//setDefaultCommand(new POVLift()); 
 	}
 }

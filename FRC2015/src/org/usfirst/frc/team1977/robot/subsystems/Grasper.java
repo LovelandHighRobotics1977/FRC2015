@@ -24,8 +24,10 @@ public class Grasper extends Subsystem {
 	private DigitalInput binReed;
 	private DigitalInput longToteReed;
 	private DigitalInput closeReed;
+	private DigitalInput suctionLimit;
 	// Runtime variables
 	private State state;
+	private boolean suctionEngaged = false;
 
 	// TODO: Associate compressor with this system? Or with the general robot?
 	// TODO: Any sensor interfaces? Possibly (a) reed switch(s)?
@@ -43,10 +45,11 @@ public class Grasper extends Subsystem {
 		wideToteReed = new DigitalInput(RobotMap.GRASPER_WIDE_REED);
 		binReed = new DigitalInput(RobotMap.GRASPER_MID_REED);
 		longToteReed = new DigitalInput(RobotMap.GRASPER_THIN_REED);
+		suctionLimit = new DigitalInput(RobotMap.GRASPER_SUCTION_LIMIT);
 		// The grasper is assumed to begin in one of the two absolute states;
 		// any other state is assumed jammed
-		state = !closeReed.get() ? State.Closed_Full
-				: !openReed.get() ? State.Open : State.Closed_Jam;
+		//state = !closeReed.get() ? State.Closed_Full
+		//		: !openReed.get() ? State.Open : State.Closed_Jam;
 	}
 
 	/**
@@ -145,6 +148,18 @@ public class Grasper extends Subsystem {
 
 	public boolean getCloseReed() {
 		return !closeReed.get();
+	}
+	
+	public boolean getSuctionLimit() {
+		return suctionLimit.get();
+	}
+	
+	public boolean isSuctionEngaged() {
+		return suctionEngaged;
+	}
+	
+	public void setSuctionEngaged(boolean suctionEngaged) {
+		this.suctionEngaged = suctionEngaged;
 	}
 
 	protected void initDefaultCommand() {

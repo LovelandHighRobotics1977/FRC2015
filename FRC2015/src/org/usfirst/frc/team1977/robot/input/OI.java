@@ -1,6 +1,10 @@
 package org.usfirst.frc.team1977.robot.input;
 
 import org.usfirst.frc.team1977.robot.commands.drive.SpeedToggle;
+import org.usfirst.frc.team1977.robot.commands.grasper.FireGrasper;
+import org.usfirst.frc.team1977.robot.commands.grasper.ReleaseGrasper;
+import org.usfirst.frc.team1977.robot.commands.lift.LowerLift;
+import org.usfirst.frc.team1977.robot.commands.lift.RaiseLift;
 
 /**
  * Struct class primarily storing joystick interface references and command
@@ -35,7 +39,13 @@ public class OI {
 	 */
 	public void init() {
 		// TODO: Map joystick inputs to commands here.
-		driveJoystick.bWhenPressed(new SpeedToggle());
+		driveJoystick.leftThumbWhenPressed(new SpeedToggle());
+		driveJoystick.xWhenPressed(new ReleaseGrasper());
+		driveJoystick.bWhenPressed(new FireGrasper());
+		driveJoystick.rightWhileHeld(new RaiseLift());
+		driveJoystick.leftWhileHeld(new LowerLift());
+		//driveJoystick.yWhenPressed(new EngageSuction());
+		//driveJoystick.aWhenPressed(new ReleaseSuction());
 	}
 
 	/**

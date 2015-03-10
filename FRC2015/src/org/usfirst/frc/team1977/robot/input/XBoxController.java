@@ -13,11 +13,14 @@ import edu.wpi.first.wpilibj.command.Command;
  * specified input from an XBox 360 controller. Contains method to check input
  * from the a, b, x, and y buttons; the left and right bumpers; and the axes for
  * the left and right joysticks and triggers. The input channels for each of
- * these controls are specified in an interior class of the RobotMap.
+ * these controls are specified in an interior class of the RobotMap. Now
+ * updated in order to take full advantage of the further button inputs
+ * available on the 2015 driver station.
  * 
  * @author Loveland High Robotics 1977
  * @author Gavin Stewart
  * @author Ali Persings
+ * @author Evan Stewart
  */
 public class XBoxController extends Joystick {
 
@@ -30,6 +33,10 @@ public class XBoxController extends Joystick {
 	private JoystickButton y;
 	private JoystickButton shoulderLeft;
 	private JoystickButton shoulderRight;
+	private JoystickButton back;
+	private JoystickButton start;
+	private JoystickButton thumbLeft;
+	private JoystickButton thumbRight;
 	// Listeners
 	private Vector axisListeners;
 
@@ -71,6 +78,10 @@ public class XBoxController extends Joystick {
 		y = addButton(RobotMap.XBoxMappings.BUTTON_Y);
 		shoulderLeft = addButton(RobotMap.XBoxMappings.BUTTON_SHOULDER_LEFT);
 		shoulderRight = addButton(RobotMap.XBoxMappings.BUTTON_SHOULDER_RIGHT);
+		back = addButton(RobotMap.XBoxMappings.BUTTON_BACK);
+		start = addButton(RobotMap.XBoxMappings.BUTTON_START);
+		thumbLeft = addButton(RobotMap.XBoxMappings.BUTTON_THUMB_LEFT);
+		thumbRight = addButton(RobotMap.XBoxMappings.BUTTON_THUMB_RIGHT);
 	}
 
 	// AButton Methods
@@ -387,6 +398,94 @@ public class XBoxController extends Joystick {
 	 */
 	public void rightWhenReleased(Command command) {
 		shoulderRight.whenReleased(command);
+	}
+
+	// Back methods
+
+	public JoystickButton getBackButton() {
+		return back;
+	}
+
+	public boolean getBackButtonValue() {
+		return back.get();
+	}
+
+	public void backWhenPressed(Command command) {
+		back.whenPressed(command);
+	}
+
+	public void backWhileHeld(Command command) {
+		back.whileHeld(command);
+	}
+
+	public void backWhenReleased(Command command) {
+		back.whenReleased(command);
+	}
+
+	// Start methods
+
+	public JoystickButton getStartButton() {
+		return start;
+	}
+
+	public boolean getStartButtonValue() {
+		return start.get();
+	}
+
+	public void startWhenPressed(Command command) {
+		start.whenPressed(command);
+	}
+
+	public void startWhileHeld(Command command) {
+		start.whileHeld(command);
+	}
+
+	public void startWhenReleased(Command command) {
+		start.whenReleased(command);
+	}
+
+	// Left thumb methods
+
+	public JoystickButton getLeftThumbButton() {
+		return thumbLeft;
+	}
+
+	public boolean getLeftThumbButtonValue() {
+		return thumbLeft.get();
+	}
+
+	public void leftThumbWhenPressed(Command command) {
+		thumbLeft.whenPressed(command);
+	}
+
+	public void leftThumbWhileHeld(Command command) {
+		thumbLeft.whileHeld(command);
+	}
+
+	public void leftThumbWhenReleased(Command command) {
+		thumbLeft.whenReleased(command);
+	}
+
+	// Right thumb methods
+
+	public JoystickButton getRightThumbButton() {
+		return thumbRight;
+	}
+
+	public boolean getRightThumbButtonValue() {
+		return thumbRight.get();
+	}
+
+	public void rightThumbWhenPressed(Command command) {
+		thumbRight.whenPressed(command);
+	}
+
+	public void rightThumbWhileHeld(Command command) {
+		thumbRight.whileHeld(command);
+	}
+
+	public void rightThumbWhenReleased(Command command) {
+		thumbRight.whenReleased(command);
 	}
 
 	// Axis methods

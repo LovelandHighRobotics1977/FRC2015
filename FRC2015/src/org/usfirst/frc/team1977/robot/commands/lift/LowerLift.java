@@ -24,7 +24,8 @@ public class LowerLift extends CommandBase {
     }
 
     protected boolean isFinished() {
-        return lift.liftFullyLowered();
+        //return lift.liftFullyLowered();
+    	return false;
     }
 
     protected void end() {

@@ -24,7 +24,8 @@ public class RaiseLift extends CommandBase {
 	}
 
 	protected boolean isFinished() {
-		return lift.liftFullyRaised();
+		//return lift.liftFullyRaised();
+		return false;
 	}
 
 	protected void end() {

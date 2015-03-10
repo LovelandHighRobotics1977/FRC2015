@@ -40,7 +40,7 @@ public class RotaryEncoder extends SensorBase implements Runnable {
 	 * lift. TODO: Find the circumference of the encoder cylinder in order to
 	 * determine this; the current value is a placeholder.
 	 */
-	private static final double COUNTS_PER_INCH = 6;
+	private static final double COUNTS_PER_INCH = 4;
 	// Hardware interface references.
 	private Lift lift;
 	private DigitalInput forwardLimit;
