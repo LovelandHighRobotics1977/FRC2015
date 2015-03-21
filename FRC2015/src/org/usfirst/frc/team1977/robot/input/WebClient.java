@@ -19,7 +19,7 @@ import edu.wpi.first.wpilibj.SensorBase;
  */
 public class WebClient extends SensorBase {
 
-	public static final String CVPI = "10.8.101.131:8888/tote/data"; // TODO:
+	public static final String CVPI = "http://10.19.77.3:8888/tote/data"; // TODO:
 	// Change to reflect final readout page; also, update IP to fit Robot bridge
 	// conventions.
 	public static final String ACCPI = "10.8.101.131:8888/accel/raw"; // TODO:
@@ -45,7 +45,7 @@ public class WebClient extends SensorBase {
 			String inputLine;
 			String readout = "";
 			while ((inputLine = br.readLine()) != null) {
-				readout.concat(inputLine);
+				readout += inputLine;
 			}
 			return readout;
 		} catch (IOException e) {

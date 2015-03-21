@@ -1,7 +1,10 @@
 package org.usfirst.frc.team1977.robot;
 
+import java.util.ArrayList;
+
 import org.usfirst.frc.team1977.robot.commands.CommandBase;
 import org.usfirst.frc.team1977.robot.input.OI;
+import org.usfirst.frc.team1977.robot.input.VisionClient;
 
 import edu.wpi.first.wpilibj.BuiltInAccelerometer;
 import edu.wpi.first.wpilibj.Compressor;
@@ -32,6 +35,7 @@ public class Robot extends IterativeRobot {
 	private static BuiltInAccelerometer builtInAccelerometer;
 	// TODO: Make this an actual thing
 	private Command autonomousCommand;
+	int i;
 
 	/**
 	 * This function is run when the robot is first started up and should be
@@ -45,11 +49,8 @@ public class Robot extends IterativeRobot {
 		compressor = new Compressor(); // Once initialized, the PCM will
 										// automatically handle operation.
 		builtInAccelerometer = new BuiltInAccelerometer();
+		VisionClient.getInstance();
 		// instantiate the command used for the autonomous period
-	}
-
-	public void disabledPeriodic() {
-		Scheduler.getInstance().run();
 	}
 
 	public void autonomousInit() {
@@ -72,6 +73,7 @@ public class Robot extends IterativeRobot {
 		// this line or comment it out.
 		if (autonomousCommand != null)
 			autonomousCommand.cancel();
+		i = 0;
 	}
 
 	/**
@@ -82,11 +84,23 @@ public class Robot extends IterativeRobot {
 
 	}
 
+	public void disabledPeriodic() {
+		Scheduler.getInstance().run();
+	}
+
 	/**
 	 * This function is called periodically during operator control
 	 */
 	public void teleopPeriodic() {
 		Scheduler.getInstance().run();
+		/**i++;
+		if (i % 500 == 0) {
+			i = 0;
+			ArrayList<VisionClient.Stack> stacks = VisionClient.getInstance().getVisibleStacks(true);
+			for (VisionClient.Stack s : stacks) {
+				System.out.println("STACK DATA: X:" + s.getPixelX() + ", Y: " + s.getPixelY() + ", NumStacked: " + s.getNumStacked() + ".");
+			}
+		}**/
 	}
 
 	/**

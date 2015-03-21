@@ -3,7 +3,7 @@ package org.usfirst.frc.team1977.robot.subsystems;
 import org.usfirst.frc.team1977.robot.RobotMap;
 import org.usfirst.frc.team1977.robot.commands.drive.UserDrive;
 
-import edu.wpi.first.wpilibj.Talon;
+import edu.wpi.first.wpilibj.Victor;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
 /**
@@ -16,10 +16,10 @@ public class Drive extends Subsystem {
 	
 	private static Drive instance;
     
-    private Talon frontLeft;
-    private Talon frontRight;
-    private Talon backLeft;
-    private Talon backRight;
+    private Victor frontLeft;
+    private Victor frontRight;
+    private Victor backLeft;
+    private Victor backRight;
     
     private UserDrive userDrive;
     
@@ -28,10 +28,10 @@ public class Drive extends Subsystem {
     private double turnPowerCoefficient = 1;
 
     public Drive() {
-    	frontLeft = new Talon(RobotMap.DRIVE_FRONT_LEFT_TALON);
-    	frontRight = new Talon(RobotMap.DRIVE_FRONT_RIGHT_TALON);
-    	backLeft = new Talon(RobotMap.DRIVE_BACK_LEFT_TALON);
-    	backRight = new Talon(RobotMap.DRIVE_BACK_RIGHT_TALON);
+    	frontLeft = new Victor(RobotMap.DRIVE_FRONT_LEFT_TALON);
+    	frontRight = new Victor(RobotMap.DRIVE_FRONT_RIGHT_TALON);
+    	backLeft = new Victor(RobotMap.DRIVE_BACK_LEFT_TALON);
+    	backRight = new Victor(RobotMap.DRIVE_BACK_RIGHT_TALON);
     }
     
     public void initDefaultCommand() {
